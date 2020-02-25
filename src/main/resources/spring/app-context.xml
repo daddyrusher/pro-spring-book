@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <bean id="provider"
+          class="com.daddyrusher.prospringbook.models.HelloWorldMessageProvider"/>
+    <bean id="renderer"
+          class="com.daddyrusher.prospringbook.models.StandardOutMessageRenderer"
+          p:messageProvider-ref="provider"/>
+
+    <bean id="injectSimpleConfig"
+          class="com.daddyrusher.prospringbook.annotated.InjectSimpleConfig"/>
+    <bean id="injectSimpleSpel"
+          class="com.daddyrusher.prospringbook.xml.InjectSimpleSpel"
+          p:name="#{injectSimpleConfig.name}"
+          p:age="#{injectSimpleConfig.age + 1}"
+          p:height="#{injectSimpleConfig.height}"
+          p:programmer="#{injectSimpleConfig.programmer}"
+          p:ageInSeconds="#{injectSimpleConfig.ageInSeconds}"/>
+
+
+
+    <!--<context:component-scan base-package="com.daddyrusher.prospringbook.annotated"/>-->
+</beans>
