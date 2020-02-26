@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:c="http://www.springframework.org/schema/c" xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="oracle"
@@ -39,4 +39,35 @@
             </list>
         </property>
     </bean>
+    <bean id="singer"
+          class="com.daddyrusher.prospringbook.ch3.annotated.Singer"
+          scope="prototype"/>
+    <bean id="abstractLookupBean"
+          class="com.daddyrusher.prospringbook.ch3.AbstractLookupDemoBean">
+        <lookup-method name="getMySinger"
+                       bean="singer"/>
+    </bean>
+    <bean id="standardLookupBean"
+          class="com.daddyrusher.prospringbook.ch3.StandardLookupDemoBean">
+        <property name="mySinger" ref="singer"/>
+    </bean>
+
+
+    <bean id="methodReplacer"
+          class="com.daddyrusher.prospringbook.ch3.FormatMessageReplacer"/>
+    <bean id="replacementTarget"
+          class="com.daddyrusher.prospringbook.ch3.ReplacementTarget">
+        <replaced-method name="formatMessage" replacer="methodReplacer">
+            <arg-type>String</arg-type>
+        </replaced-method>
+    </bean>
+    <bean id="standardTarget"
+          class="com.daddyrusher.prospringbook.ch3.ReplacementTarget"/>
+
+    <bean id="string1"
+          class="java.lang.String"/>
+    <bean name="string2"
+          class="java.lang.String"/>
+    <bean class="java.lang.String"/>
+    <bean class="java.lang.String"/>
 </beans>

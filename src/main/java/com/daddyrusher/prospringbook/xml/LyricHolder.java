@@ -5,6 +5,6 @@ public class LyricHolder {
 
     @Override
     public String toString() {
-        return "LyricHolder: { " + value + "}";
+        return "LyricHolder: { " + value + " }";
     }
 }

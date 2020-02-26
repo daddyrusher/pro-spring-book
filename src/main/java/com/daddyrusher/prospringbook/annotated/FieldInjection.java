@@ -1,5 +1,6 @@
 package com.daddyrusher.prospringbook.annotated;
 
+import com.daddyrusher.prospringbook.ch3.annotated.Singer;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class FieldInjection {
@@ -9,7 +10,7 @@ public class FieldInjection {
         context.refresh();
 
         Singer singerBean = context.getBean(Singer.class);
-        singerBean.sing();
+        /*singerBean.sing();*/
         context.close();
     }
 }
