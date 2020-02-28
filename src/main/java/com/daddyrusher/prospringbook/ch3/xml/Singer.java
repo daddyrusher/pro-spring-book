@@ -1,24 +1,24 @@
 package com.daddyrusher.prospringbook.ch3.xml;
 
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
+import java.util.StringJoiner;
 
-public class Singer implements ApplicationContextAware {
-    ApplicationContext context;
+public class Singer {
+    private String name;
+    private int age;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.context = applicationContext;
-    }
-
-    private Guitar guitar;
-
-    public Singer() {
-    }
-
-    public void sing() {
-        guitar = context.getBean("gopher", Guitar.class);
-        guitar.sing();
+    public String toString() {
+        return new StringJoiner(", ", Singer.class.getSimpleName() + "[", "]")
+                .add("name='" + name + "'")
+                .add("age=" + age)
+                .toString();
     }
 }
